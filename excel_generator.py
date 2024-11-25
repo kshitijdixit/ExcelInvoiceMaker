@@ -24,8 +24,8 @@ class InvoiceGenerator:
         header_cell.fill = header_fill
         header_cell.alignment = center_align
 
-        # Address section
-        address_cells = ['A3:D3', 'A4:D4', 'A5:D5', 'A6:D6']
+        # Address section - excluding D3 and D4 for PAN and phone number
+        address_cells = ['A3:C3', 'A4:C4', 'A5:D5', 'A6:D6']
         for cell_range in address_cells:
             self.ws.merge_cells(cell_range)
 
@@ -43,9 +43,16 @@ class InvoiceGenerator:
             cell.font = normal_font
             cell.alignment = left_align
 
-        # Add PAN and Phone
-        self.ws['D3'].value = f"PAN Number: {details['pan']}"
-        self.ws['D4'].value = f"Phone Number: {details['phone']}"
+        # Add PAN and Phone in unmerged cells
+        pan_cell = self.ws['D3']
+        pan_cell.value = f"PAN Number: {details['pan']}"
+        pan_cell.font = normal_font
+        pan_cell.alignment = left_align
+
+        phone_cell = self.ws['D4']
+        phone_cell.value = f"Phone Number: {details['phone']}"
+        phone_cell.font = normal_font
+        phone_cell.alignment = left_align
 
     def add_bill_to_section(self, client_details):
         self.ws['A8'].value = "BILL TO"
