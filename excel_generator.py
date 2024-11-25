@@ -102,15 +102,30 @@ class InvoiceGenerator:
 
     def add_bank_details(self, bank_details):
         start_row = 25
-        self.ws['A{}:B{}'.format(start_row, start_row)].fill = subheader_fill
-        self.ws.merge_cells('A{}:B{}'.format(start_row, start_row))
-        self.ws[f'A{start_row}'].value = "Bank Account Details"
-        self.ws[f'A{start_row}'].font = bold_font
         
+        # Apply fill to individual cells first
+        for col in ['A', 'B']:
+            cell = self.ws[f'{col}{start_row}']
+            cell.fill = subheader_fill
+        
+        # Then merge the cells
+        self.ws.merge_cells('A{}:B{}'.format(start_row, start_row))
+        
+        # Set the header value and font
+        header_cell = self.ws[f'A{start_row}']
+        header_cell.value = "Bank Account Details"
+        header_cell.font = bold_font
+        header_cell.alignment = left_align
+        
+        # Add bank details
         for i, (key, value) in enumerate(bank_details.items(), start=1):
             row = start_row + i
             self.ws[f'A{row}'].value = key
             self.ws[f'B{row}'].value = value
+            self.ws[f'A{row}'].font = normal_font
+            self.ws[f'B{row}'].font = normal_font
+            self.ws[f'A{row}'].alignment = left_align
+            self.ws[f'B{row}'].alignment = left_align
 
     def save(self, filename):
         self.wb.save(filename)
