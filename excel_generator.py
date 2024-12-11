@@ -19,7 +19,7 @@ class InvoiceGenerator:
         # Company header
         self.ws.merge_cells('A1:D2')
         header_cell = self.ws['A1']
-        header_cell.value = "ACME INC."
+        header_cell.value = "INVOICE"
         header_cell.font = header_font
         header_cell.fill = header_fill
         header_cell.alignment = center_align
