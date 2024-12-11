@@ -12,14 +12,14 @@ with st.form("invoice_form"):
     
     with col1:
         st.subheader("Company Details")
-        company_name = st.text_input("Company Name", "Arnav Services")
-        address_line1 = st.text_input("Address Line 1", "House Number 302")
-        address_line2 = st.text_input("Address Line 2", "Amar Jyoti, HBCS Layout")
-        city = st.text_input("City", "Bengaluru")
-        state = st.text_input("State", "Karnataka")
-        pincode = st.text_input("Pincode", "560071")
-        pan = st.text_input("PAN Number", "RBFPS1913F")
-        phone = st.text_input("Phone Number", "9301744823")
+        company_name = st.text_input("Company Name", "Acme Inc.")
+        address_line1 = st.text_input("Address Line 1", "123 Business Plaza")
+        address_line2 = st.text_input("Address Line 2", "Silicon Valley")
+        city = st.text_input("City", "Mountain View")
+        state = st.text_input("State", "California")
+        pincode = st.text_input("Pincode", "94043")
+        pan = st.text_input("PAN Number", "ABCDE1234F")
+        phone = st.text_input("Phone Number", "555-0123-4567")
 
     with col2:
         st.subheader("Client Details")
@@ -36,11 +36,11 @@ with st.form("invoice_form"):
     discount_percentage = st.number_input("Discount Percentage", value=15.0)
 
     st.subheader("Bank Details")
-    bank_name = st.text_input("Bank Name", "ICICI Bank")
-    account_name = st.text_input("Account Name", "Arnav Services")
-    account_number = st.text_input("Account Number", "234005002043")
-    ifsc_code = st.text_input("IFSC Code", "ICIC0002340")
-    swift_code = st.text_input("Swift Code", "ICICINBBCTS")
+    bank_name = st.text_input("Bank Name", "Global Bank")
+    account_name = st.text_input("Account Name", "Acme Inc.")
+    account_number = st.text_input("Account Number", "1234567890")
+    ifsc_code = st.text_input("IFSC Code", "GLOB0001234")
+    swift_code = st.text_input("Swift Code", "GLOBUS12345")
     account_type = st.text_input("Account Type", "Current Account")
 
     submitted = st.form_submit_button("Generate Invoice")
